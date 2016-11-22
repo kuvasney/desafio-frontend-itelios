@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Teste Itelios</title>
+</head>
+<body>
+	<div id="recommendations">
+		<h2>Recomendado</h2>
+		<div class="r">
+			<h2 class="name"></h2>
+			<img src="" alt="" class="prodImg">
+			<p class="pr"> De <span class="oldprice"></span> por <span class="price"></span></p>	
+		</div>
+	</div>
+	<script async>
+		function reqListener () {
+			console.log(this.responseText);
+		}
+
+		var xhr = new XMLHttpRequest();
+		xhr.addEventListener("load", reqListener);
+		xhr.open("GET", "produtos.json", true);
+		xhr.send();
+		xhr.onreadystatechange = processRequest;
+
+		function processRequest(e) {
+			if (xhr.readyState == 4 && xhr.status == 200) {
+		        var response = JSON.parse(xhr.responseText);
+		        var prdata = response[0].data;
+		        var recommendations = prdata.recommendation;
+		        // console.log(prdata.recommendation.length);
+		        fillRecommendations(recommendations);
+		    }
+		};
+
+		function fillRecommendations(products) {
+			console.log(products);
+			var wr = document.getElementById("recommendations"),
+				r = wr.getElementsByClassName("r")[0],
+				prodLimit = products.length;
+				for (var i=0;i<prodLimit;i++) {
+					console.log(products[i].oldPrice);
+					newR = r.cloneNode(true);
+					r.getElementsByClassName("name")[0].innerHTML = products[i].name;
+					// r.getElementsByClassName("price")[0].innerHTML = products[i].price;
+					if(products[i].oldPrice != null) {
+						r.getElementsByClassName("pr")[0].innerHTML = "De "+products[i].oldPrice+" por "+products[i].price+".";						
+					} else {
+						r.getElementsByClassName("pr")[0].innerHTML = "Apenas "+products[i].price+".";
+					};					
+					r.getElementsByClassName("prodImg")[0].setAttribute("src", products[i].imageName);
+					wr.appendChild(newR);
+					// console.log(newR);
+				}
+		};
+		(function(){
+			// xhr.onreadystatechange = fillRecommendations;			
+		})();
+	</script>
+</body>
+</html>
