@@ -15,7 +15,8 @@
 		<div class="r">
 			<h2 class="name"></h2>
 			<img src="" alt="" class="prodImg">
-			<p class="pr"> De <span class="oldprice"></span> por <span class="price"></span></p>	
+			<p class="pr"> De <span class="oldprice"></span> por <span class="price"></span></p>
+			<p><a href="" class="buy">Adicionar ao carrinho</a></p>	
 		</div>
 	</div>
 	<div id="recommendation">
@@ -24,6 +25,7 @@
 			<h2 class="name"></h2>
 			<img src="" alt="" class="prodImg">
 			<p class="pr"> De <span class="oldprice"></span> por <span class="price"></span></p>	
+			<p><a href="" class="buy">Adicionar ao carrinho</a></p>	
 		</div>
 	</div>
 	<script async>
@@ -57,7 +59,6 @@
 				prodLimit = products.length;
 				console.log(r)
 				for (var i=0;i<prodLimit;i++) {
-					console.log(products[i].oldPrice);
 					r.getElementsByClassName("name")[0].innerHTML = products[i].name;
 					// r.getElementsByClassName("price")[0].innerHTML = products[i].price;
 					if(products[i].oldPrice != null) {
@@ -66,10 +67,10 @@
 						r.getElementsByClassName("pr")[0].innerHTML = "Apenas "+products[i].price+".";
 					};					
 					r.getElementsByClassName("prodImg")[0].setAttribute("src", products[i].imageName);
+					r.getElementsByClassName("buy")[0].setAttribute("href", products[i].detailUrl);
+					console.log(r.getElementsByClassName("buy")[0]);
 					newR = r.cloneNode(true);
 					wr.appendChild(newR);
-					// newR.classList.remove("hide");
-					console.log(newR);
 				}
 		};
 
@@ -84,10 +85,11 @@
 					r.getElementsByClassName("pr")[0].innerHTML = "De "+products.oldPrice+" por "+products.price+".";						
 				} else {
 					r.getElementsByClassName("pr")[0].innerHTML = "Apenas "+products.price+".";
-				};	
+				};
+				r.getElementsByClassName("buy")[0].setAttribute("href", products.detailUrl);
 		};
 		(function(){
-			// xhr.onreadystatechange = fillrecommendation;			
+			//
 		})();
 	</script>
 </body>
