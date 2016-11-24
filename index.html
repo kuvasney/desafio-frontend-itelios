@@ -1,96 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
-	<title>Teste Itelios</title>
-	<style>
-		.hide{
-			display: none;
-		}
-	</style>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Teste Itelios</title>	
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:400,900" rel="stylesheet">
+	<link rel="stylesheet" href="css/prod/style.css">
 </head>
 <body>
-	<div id="reference">
-		<h2>Você visitou:</h2>
-		<div class="r">
-			<h2 class="name"></h2>
-			<img src="" alt="" class="prodImg">
-			<p class="pr"> De <span class="oldprice"></span> por <span class="price"></span></p>
-			<p><a href="" class="buy">Adicionar ao carrinho</a></p>	
+	<section id="reference" class="regularsection">
+		<h2 class="regularsection__title">você visitou:</h2>
+		<div id="reference_wrap" class="regularsection__wrap clearfix">
+			<div class="reference__prod">
+				<img src="" alt="" class="prodImg">
+				<h2 class="prodName"></h2>
+				<p class="prodPrice"><span class="price"></span></p>	
+				<p><a href="" class="prodBuy">Adicionar ao carrinho</a></p>	
+			</div>
+		</div>		
+	</section>
+
+	<section id="recommendation" class="regularsection">
+		<h2 class="regularsection__title">talvez se interesse por:</h2>
+		<div id="recommendation_wrap" class="regularsection__wrap clearfix">
+			<div class="recommendation__prod">
+				<img src="" alt="" class="prodImg">
+				<h2 class="prodName"></h2>
+				<p class="prodPrice"><span class="price"></span></p>	
+				<p><a href="" class="prodBuy">Adicionar ao carrinho</a></p>	
+			</div>
 		</div>
-	</div>
-	<div id="recommendation">
-		<h2>talvez se interesse por:</h2>
-		<div class="r">
-			<h2 class="name"></h2>
-			<img src="" alt="" class="prodImg">
-			<p class="pr"> De <span class="oldprice"></span> por <span class="price"></span></p>	
-			<p><a href="" class="buy">Adicionar ao carrinho</a></p>	
-		</div>
-	</div>
-	<script async>
-		function reqListener () {
-			// console.log(this.responseText);
-		}
-
-		var xhr = new XMLHttpRequest();
-		// xhr.addEventListener("load", reqListener);
-		xhr.open("GET", "produtos.json", true);
-		xhr.send();
-		xhr.onreadystatechange = processRequest;
-
-		function processRequest(e) {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-		        var response = JSON.parse(xhr.responseText);
-		        var prdata = response[0].data;
-		        var recommendation = prdata.recommendation;
-		        var reference = prdata.reference.item;
-		        console.log(prdata)
-		        // console.log(prdata.recommendation.length);
-		        fillrecommendation(recommendation);
-		        fillReference(reference);
-		    }
-		};
-
-		function fillrecommendation(products) {
-			console.log(products);
-			var wr = document.getElementById("recommendation"),
-				r = wr.getElementsByClassName("r")[0],
-				prodLimit = products.length;
-				console.log(r)
-				for (var i=0;i<prodLimit;i++) {
-					r.getElementsByClassName("name")[0].innerHTML = products[i].name;
-					// r.getElementsByClassName("price")[0].innerHTML = products[i].price;
-					if(products[i].oldPrice != null) {
-						r.getElementsByClassName("pr")[0].innerHTML = "De "+products[i].oldPrice+" por "+products[i].price+".";						
-					} else {
-						r.getElementsByClassName("pr")[0].innerHTML = "Apenas "+products[i].price+".";
-					};					
-					r.getElementsByClassName("prodImg")[0].setAttribute("src", products[i].imageName);
-					r.getElementsByClassName("buy")[0].setAttribute("href", products[i].detailUrl);
-					console.log(r.getElementsByClassName("buy")[0]);
-					newR = r.cloneNode(true);
-					wr.appendChild(newR);
-				}
-		};
-
-		function fillReference(products) {
-			console.log(products);
-
-			var wr = document.getElementById("reference"),
-				r = wr.getElementsByClassName("r")[0];
-				r.getElementsByClassName("prodImg")[0].setAttribute("src", products.imageName);
-				r.getElementsByClassName("name")[0].innerHTML = products.name;
-				if(products.oldPrice != null) {
-					r.getElementsByClassName("pr")[0].innerHTML = "De "+products.oldPrice+" por "+products.price+".";						
-				} else {
-					r.getElementsByClassName("pr")[0].innerHTML = "Apenas "+products.price+".";
-				};
-				r.getElementsByClassName("buy")[0].setAttribute("href", products.detailUrl);
-		};
-		(function(){
-			//
-		})();
-	</script>
+		
+	</section>
+	<script src="js/functions.js"></script>
 </body>
 </html>
