@@ -7,32 +7,41 @@
 	<title>Teste Itelios</title>	
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:400,900" rel="stylesheet">
 	<link rel="stylesheet" href="css/prod/style.css">
+	<link rel="stylesheet" href="css/icomoon/style.css">
 </head>
 <body>
-	<section id="reference" class="regularsection">
+	<section id="reference" class="regularsection clearfix">
 		<h2 class="regularsection__title">você visitou:</h2>
 		<div id="reference_wrap" class="regularsection__wrap clearfix">
-			<div class="reference__prod">
-				<img src="" alt="" class="prodImg">
-				<h2 class="prodName"></h2>
-				<p class="prodPrice"><span class="price"></span></p>	
-				<p><a href="" class="prodBuy">Adicionar ao carrinho</a></p>	
+			<div class="product">
+				<div class="product-boxImg">
+					<img src="https://camo.githubusercontent.com/a1a81b0529517027d364ee8432cf9a8bd309542a/687474703a2f2f692e696d6775722e636f6d2f56446449444f522e676966" alt="carregando..." class="prodImg">
+				</div>
+				<h2 class="prodName">carregando...</h2>
+				<p class="prodPrice">Por: <span class="price">carregando...</span></p>	
+				<p class="prodPrice"><span class="priceCondition">carregando...</span> sem juros</p>	
+				<p><a href="HTML_PRODURL" class="prodBuy">Adicionar ao carrinho <i class="icon-cart-plus"></i></a></p>	
 			</div>
 		</div>		
 	</section>
 
-	<section id="recommendation" class="regularsection">
+	<section id="recommendation" class="regularsection clearfix">
 		<h2 class="regularsection__title">talvez se interesse por:</h2>
-		<div id="recommendation_wrap" class="regularsection__wrap clearfix">
-			<div class="recommendation__prod">
-				<img src="" alt="" class="prodImg">
-				<h2 class="prodName"></h2>
-				<p class="prodPrice"><span class="price"></span></p>	
-				<p><a href="" class="prodBuy">Adicionar ao carrinho</a></p>	
-			</div>
+		<div class="carrousel">
+			<div id="recommendation_wrap" class="regularsection__wrap carrousel_wrap clearfix">
+				<div class="product">
+					<div class="product-boxImg">
+						<img src="https://camo.githubusercontent.com/a1a81b0529517027d364ee8432cf9a8bd309542a/687474703a2f2f692e696d6775722e636f6d2f56446449444f522e676966" alt="carregando..." class="prodImg">
+					</div>
+					<h2 class="prodName">carregando...</h2>
+					<p class="prodPrice">Por: <span class="price">carregando...</span></p>	
+					<p class="prodPrice"><span class="priceCondition">carregando...</span> sem juros</p>	
+					<p><a href="HTML_PRODURL" class="prodBuy">Adicionar ao carrinho <i class="icon-cart-plus"></i></a></p>	
+				</div>
+			</div>			
 		</div>
 		
 	</section>
-	<script src="js/functions.js"></script>
+	<script src="js/functions-min.js"></script>
 </body>
 </html>
