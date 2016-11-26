@@ -37,7 +37,7 @@ function fillRecommendation(product, wrapper) {
 			'	<h2 class="prodName">HTML_PRODNAME</h2>'+
 			'	<p class="prodPrice">Por: <span class="price">HTML_PRODPRICE</span></p>	'+
 			'	<p class="prodPrice">ou <span class="priceCondition">HTML_PRODPRICONDITION</span> sem juros</p>	'+
-			'	<p><a href="HTML_PRODURL" class="prodBuy"><span>Adicionar ao carrinho</span> <i class="icon-cart-plus"></i></a></p>	'+
+			'	<div class="prodBuyHolder"><a href="HTML_PRODURL" class="prodBuy"><span>adicionar ao carrinho</span> <i class="icon-cart-plus"></i></a></div>	'+
 			'</div>';
 			wr.classList.add("preload");
 			if (product.length > 0) {
